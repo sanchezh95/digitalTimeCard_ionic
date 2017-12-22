@@ -1,14 +1,18 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>Digital Time Card</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <!--Display current date-->
+  <h1>{{month}} {{day}}</h1>
+
+  <!--Clock in/clock out buttons-->
+  <button [disabled]="working" type="button" class="btn btn-success btn-block" (click)="clockIn()">Clock In</button>
+  <p *ngIf="on">You clocked in at: {{clockInTime}}</p>
+
+  <button [disabled]="!working" type="button" class="btn btn-danger btn-block" (click)="clockOut()">Clock Out</button>
+  <p *ngIf="off">You clocked in at: {{clockOutTime}}</p>
+  <p *ngIf="off">You worked for: {{hoursWorked}} hours</p>
 </ion-content>
